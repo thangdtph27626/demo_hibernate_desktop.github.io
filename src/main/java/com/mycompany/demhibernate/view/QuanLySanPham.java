@@ -46,9 +46,9 @@ public class QuanLySanPham extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtTen = new javax.swing.JTextField();
         txtGia = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnThem = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,24 +78,24 @@ public class QuanLySanPham extends javax.swing.JFrame {
 
         jLabel3.setText("Giá:");
 
-        jButton1.setText("thêm");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnThem.setText("thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnThemActionPerformed(evt);
             }
         });
 
-        jButton2.setText("sửa");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSua.setText("sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSuaActionPerformed(evt);
             }
         });
 
-        jButton3.setText("xóa");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnXoa.setText("xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnXoaActionPerformed(evt);
             }
         });
 
@@ -123,11 +123,11 @@ public class QuanLySanPham extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnThem)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(btnSua)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(btnXoa)
                 .addGap(52, 52, 52))
         );
         layout.setVerticalGroup(
@@ -144,9 +144,9 @@ public class QuanLySanPham extends javax.swing.JFrame {
                     .addComponent(txtGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(76, 76, 76)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(btnThem)
+                    .addComponent(btnSua)
+                    .addComponent(btnXoa))
                 .addGap(42, 42, 42)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -157,7 +157,7 @@ public class QuanLySanPham extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
        String ten = txtTen.getText();
        float gia = Float.parseFloat(txtGia.getText());
        // tạo đối tượng sản phẩm
@@ -169,7 +169,7 @@ public class QuanLySanPham extends javax.swing.JFrame {
        // load lại data lên table 
         loadTable(sanPhamService.getAll());
        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnThemActionPerformed
 
     private void tblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamMouseClicked
         int index = tblSanPham.getSelectedRow();
@@ -177,7 +177,7 @@ public class QuanLySanPham extends javax.swing.JFrame {
         txtGia.setText(tblSanPham.getModel().getValueAt(index, 2).toString());
     }//GEN-LAST:event_tblSanPhamMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
          String ten = txtTen.getText();
          float gia = Float.parseFloat(txtGia.getText());
         // get id sản phẩm 
@@ -191,9 +191,9 @@ public class QuanLySanPham extends javax.swing.JFrame {
        sanPhamService.update(sanPham, id);
        // load lại data lên table 
         loadTable(sanPhamService.getAll());
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnSuaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // get id sản phẩm 
         int index = tblSanPham.getSelectedRow();
         int id = Integer.parseInt(tblSanPham.getModel().getValueAt(index, 0).toString());
@@ -201,7 +201,7 @@ public class QuanLySanPham extends javax.swing.JFrame {
         sanPhamService.delete(id);
          // load lại data lên table 
         loadTable(sanPhamService.getAll());
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnXoaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,9 +239,9 @@ public class QuanLySanPham extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnXoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

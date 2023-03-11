@@ -5,7 +5,7 @@
 package com.mycompany.demhibernate.repository;
 
 import com.mycompany.demhibernate.entity.SanPham;
-import com.mycompany.demhibernate.until.HibernateUtil;
+import com.mycompany.demhibernate.util.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
@@ -19,14 +19,14 @@ import org.hibernate.Transaction;
 public class SanPhamRepository {
     
     public List<SanPham> getAll() {
-        List<SanPham> lops = new ArrayList<>();
+        List<SanPham> sanPhams = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("FROM SanPham", SanPham.class);
-            lops = query.getResultList();
+            sanPhams = query.getResultList();
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
-        return lops;
+        return sanPhams;
     }
     
     public boolean add(SanPham sanPham){
